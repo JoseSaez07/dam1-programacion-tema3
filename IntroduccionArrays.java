@@ -15,10 +15,11 @@ public class IntroduccionArrays {
      *                     correspondientes a los días de la semana, en orden.
      *                     Debe tener exactamente 7 elementos.
      */
-    public void mostrarTemperaturas(int[] temperaturas) {
-
+    public static void  mostrarTemperaturas(int[] temperaturas) {
+        for (int i = 0; i < temperaturas.length; i++) {
+System.out.println("Hola mundo " + i);
     }
-
+}
     /**
      * Método principal del programa. Crea un array con las temperaturas máximas
      * de la semana y llama al método {@link #mostrarTemperaturas(int[])} para
@@ -28,9 +29,12 @@ public class IntroduccionArrays {
      */
     public static void main(String[] args) {
 
+
         // 1. Declara un array de tipo int llamado maxTemperaturas que tiene 7 elementos
         //    Cada elemento se corresponde con un día de la semana: Lunes, ... Domingo
 
+        int[] maxTemperaturas = {22, 23 ,24, 24, 24, 23,21,20};
+        mostrarTemperaturas(maxTemperaturas);
         // 2. Los valores son: 22, 23, 24, 24 , 23, 21, 20
 
         // 3. Llama a la función mostrarTemperaturas
