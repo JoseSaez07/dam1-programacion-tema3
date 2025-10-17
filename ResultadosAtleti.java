@@ -69,7 +69,8 @@ public class ResultadosAtleti {
     public static Partido partidoMasGolesMarcados(Partido[] temporada) {
     Partido mejor = temporada[0];
     for (int i = 1; i < temporada.length;  i++){
-      for(temporada[i].getGolesRecibidos() > mejor.getGolesMarcados()){
+      if (temporada[i].getGolesRecibidos() > mejor.getGolesMarcados()){
+        mejor = temporada[i];
       
       }
 
@@ -138,8 +139,8 @@ public class ResultadosAtleti {
             new Partido("Real Sociedad", 2, 1),
             new Partido("Valencia", 0, 0),
             new Partido("Barcelona", 2, 3),
-            new Partido("Real Madrid", 0, 5)
-            new Partido("Rayo Vallecano", 4, 2)
+            new Partido("Real Madrid", 0, 5),
+            new Partido("Rayo Vallecano", 4, 2),
         };
 
         // 2️⃣ Llama a los métodos y muestra resultados
@@ -157,7 +158,7 @@ public class ResultadosAtleti {
         // System.out.printf("Partido con MENOS goles marcados: %s%n", menos);
         // System.out.printf("TOTAL goles marcados: %d | TOTAL goles recibidos: %d%n", marcados, recibidos);
 
-        sc.close();
+      
     }
 }
 
