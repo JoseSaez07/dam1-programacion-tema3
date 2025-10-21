@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class ResultadosAtleti {
 
     /**
@@ -6,7 +7,7 @@ public class ResultadosAtleti {
      */
     static class Partido {
         private final String rival;
-        private final int golesMarcados;  // a favor
+        private final int golesMarcados; // a favor
         private final int golesRecibidos; // en contra
 
         /**
@@ -23,13 +24,19 @@ public class ResultadosAtleti {
         }
 
         /** @return rival */
-        public String getRival() { return rival; }
+        public String getRival() {
+            return rival;
+        }
 
         /** @return goles a favor */
-        public int getGolesMarcados() { return golesMarcados; }
+        public int getGolesMarcados() {
+            return golesMarcados;
+        }
 
         /** @return goles en contra */
-        public int getGolesRecibidos() { return golesRecibidos; }
+        public int getGolesRecibidos() {
+            return golesRecibidos;
+        }
 
         @Override
         public String toString() {
@@ -48,17 +55,14 @@ public class ResultadosAtleti {
      * @return media de goles marcados
      */
     public static double mediaGolesMarcados(Partido[] temporada) {
-        int suma = 0;
-        for (int i = 0;  i < temporada.length; i++){
-        suma += temporada[i].getGolesMarcados();
-
+        double suma = 0;
+        for (int i = 0; i < temporada.length; i++) {
+            Partido t = temporada[i];
+            suma += t.getGolesMarcados();
 
         }
-         return suma;
+        return suma / temporada.length;
     }
-
-        
-    
 
     /**
      * Devuelve el partido con MÁS goles marcados.
@@ -67,25 +71,23 @@ public class ResultadosAtleti {
      * @return partido con el máximo de goles a favor
      */
     public static Partido partidoMasGolesMarcados(Partido[] temporada) {
-    Partido mejor = temporada[0];
-    for (int i = 1; i < temporada.length;  i++){
-      if (temporada[i].getGolesRecibidos() > mejor.getGolesMarcados()){
-        mejor = temporada[i];
-      
-      }
+        Partido mejor = temporada[0];
+        for (int i = 1; i < temporada.length; i++) {
+            if (temporada[i].getGolesRecibidos() > mejor.getGolesMarcados()) {
+                mejor = temporada[i];
 
+            }
+
+        }
+        return mejor;
     }
-     return mejor;
-}
 
-    
-        // TODO:
-        // 1. Crea una variable Partido mejor = temporada[0];
-        // 2. Recorre el array desde el índice 1.
-        // 3. Si temporada[i].getGolesMarcados() > mejor.getGolesMarcados(), actualiza mejor.
-        // 4. Devuelve mejor.
-      
-    
+    // TODO:
+    // 1. Crea una variable Partido mejor = temporada[0];
+    // 2. Recorre el array desde el índice 1.
+    // 3. Si temporada[i].getGolesMarcados() > mejor.getGolesMarcados(), actualiza
+    // mejor.
+    // 4. Devuelve mejor.
 
     /**
      * Devuelve el partido con MENOS goles marcados.
@@ -97,7 +99,8 @@ public class ResultadosAtleti {
         // TODO:
         // 1. Crea una variable Partido peor = temporada[0];
         // 2. Recorre el array desde el índice 1.
-        // 3. Si temporada[i].getGolesMarcados() < peor.getGolesMarcados(), actualiza peor.
+        // 3. Si temporada[i].getGolesMarcados() < peor.getGolesMarcados(), actualiza
+        // peor.
         // 4. Devuelve peor.
         return null;
     }
@@ -112,7 +115,10 @@ public class ResultadosAtleti {
     public static int totalGolesMarcados(Partido[] temporada) {
         // TODO (opcional):
         // 1. Acumula getGolesMarcados() en un int y devuelve.
-        return 0;
+        int totalGoles = 0;
+        for (int i = 0;  i < temporada.length; i++){
+        totalGoles += temporada[i].getGolesMarcados();
+        return totalGoles;
     }
 
     /**
@@ -135,12 +141,12 @@ public class ResultadosAtleti {
 
         // 1️⃣ Ejemplo con datos fijos (puedes cambiarlos o leerlos con Scanner)
         Partido[] temporada = {
-            new Partido("Sevilla", 3, 1),
-            new Partido("Real Sociedad", 2, 1),
-            new Partido("Valencia", 0, 0),
-            new Partido("Barcelona", 2, 3),
-            new Partido("Real Madrid", 0, 5),
-            new Partido("Rayo Vallecano", 4, 2),
+                new Partido("Sevilla", 3, 1),
+                new Partido("Real Sociedad", 2, 1),
+                new Partido("Valencia", 0, 0),
+                new Partido("Barcelona", 2, 3),
+                new Partido("Real Madrid", 0, 5),
+                new Partido("Rayo Vallecano", 4, 2),
         };
 
         // 2️⃣ Llama a los métodos y muestra resultados
@@ -156,13 +162,8 @@ public class ResultadosAtleti {
         // System.out.printf("Media de goles marcados: %.2f%n", media);
         // System.out.printf("Partido con MÁS goles marcados: %s%n", mas);
         // System.out.printf("Partido con MENOS goles marcados: %s%n", menos);
-        // System.out.printf("TOTAL goles marcados: %d | TOTAL goles recibidos: %d%n", marcados, recibidos);
+        // System.out.printf("TOTAL goles marcados: %d | TOTAL goles recibidos: %d%n",
+        // marcados, recibidos);
 
-      
     }
 }
-
-
-
-
-
