@@ -34,7 +34,7 @@ public class BusquedaArtistas {
      */
     public static int indiceDe(Artista[] cartel, String nombreBuscado) {
      for (int i= 0;i < cartel.length; i++ ){
-     if(cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)) {
+     if(nombreBuscado.equalsIgnoreCase(cartel[i].getNombre())) {
      return i;
      }
      }
@@ -57,19 +57,9 @@ public class BusquedaArtistas {
         // TODO:
         // Devuelve true si indiceDe(cartel, nombreBuscado) es distinto de -1.
         // En caso contrario, false.
-       for (int i =0; i > cartel.length; i++ ) {
-       if (!(indiceDe(cartel, nombreBuscado) == -1)) {
-       return true;
-        
-       }
- 
-
-       }
        
-       
-       
-       
-        return false;
+       return indiceDe(cartel, nombreBuscado) != -1;
+      
     }
 
     /**
@@ -85,9 +75,9 @@ public class BusquedaArtistas {
         // 2) Crea un nuevo int[] del tamaño contado.
         // 3) Recorre de nuevo y rellena ese array con los índices encontrados.
         // 4) Devuélvelo.
-        return new int[0];
-    }
-
+        
+    
+    
     /**
      * Devuelve un array con los índices de artistas cuyo nombre empieza por la 'inicial' dada.
      * No distingue mayúsculas/minúsculas. Si no hay, devuelve array de longitud 0.
