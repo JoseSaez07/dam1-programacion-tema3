@@ -33,8 +33,8 @@ public class BusquedaArtistas {
      * @return índice (0..n-1) o -1 si no existe
      */
     public static int indiceDe(Artista[] cartel, String nombreBuscado) {
-     for (int i= 0;i > cartel.length; i++ ){
-     if(cartel[i].getNombre().equalsIgnoreCase("nombreBuscado")) {
+     for (int i= 0;i < cartel.length; i++ ){
+     if(cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)) {
      return i;
      }
      }
