@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class ResultadosAtleti {
-
     /**
      * Representa un partido con rival y goles a favor/en contra.
      */
+
     static class Partido {
         private final String rival;
         private final int golesMarcados; // a favor
