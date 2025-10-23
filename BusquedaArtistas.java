@@ -1,6 +1,6 @@
 
 public class BusquedaArtistas {
-
+}
     /**
      * Representa a un artista con nombre y número de seguidores (en miles).
      */

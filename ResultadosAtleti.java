@@ -4,112 +4,113 @@ public class ResultadosAtleti {
     /**
      * Representa un partido con rival y goles a favor/en contra.
      */
+}
 
-    static class Partido {
-        private final String rival;
-        private final int golesMarcados; // a favor
-        private final int golesRecibidos; // en contra
-
-        /**
-         * Crea un nuevo partido.
-         *
-         * @param rival          nombre del equipo rival
-         * @param golesMarcados  goles a favor del Atlético
-         * @param golesRecibidos goles en contra del Atlético
-         */
-        public Partido(String rival, int golesMarcados, int golesRecibidos) {
-            this.rival = rival;
-            this.golesMarcados = golesMarcados;
-            this.golesRecibidos = golesRecibidos;
-        }
-
-        /** @return rival */
-        public String getRival() {
-            return rival;
-        }
-
-        /** @return goles a favor */
-        public int getGolesMarcados() {
-            return golesMarcados;
-        }
-
-        /** @return goles en contra */
-        public int getGolesRecibidos() {
-            return golesRecibidos;
-        }
-
-        @Override
-        public String toString() {
-            return String.format("vs %s (%d-%d)", rival, golesMarcados, golesRecibidos);
-        }
-    }
-
-    // ---------------------------------------------------------------------
-    // MÉTODOS A IMPLEMENTAR (como en el ejercicio de notas)
-    // ---------------------------------------------------------------------
+static class Partido {
+    private final String rival;
+    private final int golesMarcados; // a favor
+    private final int golesRecibidos; // en contra
 
     /**
-     * Calcula la media aritmética de los goles MARCADOS por partido.
+     * Crea un nuevo partido.
      *
-     * @param temporada array de partidos (no nulo ni vacío)
-     * @return media de goles marcados
+     * @param rival          nombre del equipo rival
+     * @param golesMarcados  goles a favor del Atlético
+     * @param golesRecibidos goles en contra del Atlético
      */
-    public static double mediaGolesMarcados(Partido[] temporada) {
-        double suma = 0;
-        for (int i = 0; i < temporada.length; i++) {
-            Partido t = temporada[i];
-            suma += t.getGolesMarcados();
-
-        }
-        return suma / temporada.length;
+    public Partido(String rival, int golesMarcados, int golesRecibidos) {
+        this.rival = rival;
+        this.golesMarcados = golesMarcados;
+        this.golesRecibidos = golesRecibidos;
     }
 
-    /**
-     * Devuelve el partido con MÁS goles marcados.
-     *
-     * @param temporada array de partidos (no nulo ni vacío)
-     * @return partido con el máximo de goles a favor
-     */
-    public static Partido partidoMasGolesMarcados(Partido[] temporada) {
-        Partido mejor = temporada[0];
-        for (int i = 1; i < temporada.length; i++) {
-            if (temporada[i].getGolesRecibidos() > mejor.getGolesMarcados()) {
-                mejor = temporada[i];
-
-            }
-
-        }
-        return mejor;
+    /** @return rival */
+    public String getRival() {
+        return rival;
     }
 
+    /** @return goles a favor */
+    public int getGolesMarcados() {
+        return golesMarcados;
+    }
+
+    /** @return goles en contra */
+    public int getGolesRecibidos() {
+        return golesRecibidos;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("vs %s (%d-%d)", rival, golesMarcados, golesRecibidos);
+    }
+}
+
+// ---------------------------------------------------------------------
+// MÉTODOS A IMPLEMENTAR (como en el ejercicio de notas)
+// ---------------------------------------------------------------------
+
+/**
+ * Calcula la media aritmética de los goles MARCADOS por partido.
+ *
+ * @param temporada array de partidos (no nulo ni vacío)
+ * @return media de goles marcados
+ */
+public static double mediaGolesMarcados(Partido[] temporada) {
+    double suma = 0;
+    for (int i = 0; i < temporada.length; i++) {
+        Partido t = temporada[i];
+        suma += t.getGolesMarcados();
+
+    }
+    return suma / temporada.length;
+}
+
+/**
+ * Devuelve el partido con MÁS goles marcados.
+ *
+ * @param temporada array de partidos (no nulo ni vacío)
+ * @return partido con el máximo de goles a favor
+ */
+public static Partido partidoMasGolesMarcados(Partido[] temporada) {
+    Partido mejor = temporada[0];
+    for (int i = 1; i < temporada.length; i++) {
+        if (temporada[i].getGolesRecibidos() > mejor.getGolesMarcados()) {
+            mejor = temporada[i];
+
+        }
+
+    }
+    return mejor;
+}
+
+// TODO:
+// 1. Crea una variable Partido mejor = temporada[0];
+// 2. Recorre el array desde el índice 1.
+// 3. Si temporada[i].getGolesMarcados() > mejor.getGolesMarcados(), actualiza
+// mejor.
+// 4. Devuelve mejor.
+
+/**
+ * Devuelve el partido con MENOS goles marcados.
+ *
+ * @param temporada array de partidos (no nulo ni vacío)
+ * @return partido con el mínimo de goles a favor
+ */
+public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
     // TODO:
-    // 1. Crea una variable Partido mejor = temporada[0];
+    // 1. Crea una variable Partido peor = temporada[0];
     // 2. Recorre el array desde el índice 1.
-    // 3. Si temporada[i].getGolesMarcados() > mejor.getGolesMarcados(), actualiza
-    // mejor.
-    // 4. Devuelve mejor.
+    // 3. Si temporada[i].getGolesMarcados() < peor.getGolesMarcados(), actualiza
+    // peor.
+    // 4. Devuelve peor.
+    return null;
+}
 
-    /**
-     * Devuelve el partido con MENOS goles marcados.
-     *
-     * @param temporada array de partidos (no nulo ni vacío)
-     * @return partido con el mínimo de goles a favor
-     */
-    public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
-        // TODO:
-        // 1. Crea una variable Partido peor = temporada[0];
-        // 2. Recorre el array desde el índice 1.
-        // 3. Si temporada[i].getGolesMarcados() < peor.getGolesMarcados(), actualiza
-        // peor.
-        // 4. Devuelve peor.
-        return null;
-    }
+// ---------------------------------------------------------------------
+// EXTRAS (opcional, por si quieres pedir suma de goles)
+// ---------------------------------------------------------------------
 
-    // ---------------------------------------------------------------------
-    // EXTRAS (opcional, por si quieres pedir suma de goles)
-    // ---------------------------------------------------------------------
-
-    /**
+/**
      * Suma total de goles marcados en la temporada.
      */
     public static int totalGolesMarcados(Partido[] temporada) {
