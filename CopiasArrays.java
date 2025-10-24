@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class CopiasArrays {
+    String[]arr=new carr[4  ]
 
     /** Copia manual (mismo tamaño y orden). */
     static String[] copiarManual(String[] origen) {
