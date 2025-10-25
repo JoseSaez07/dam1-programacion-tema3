@@ -1,3 +1,5 @@
+import java.util.Locale;
+import java.util.Scanner;
 
 public class BusquedaArtistas {
 
@@ -13,8 +15,13 @@ public class BusquedaArtistas {
             this.seguidoresMiles = seguidoresMiles;
         }
 
-        public String getNombre() { return nombre; }
-        public int getSeguidoresMiles() { return seguidoresMiles; }
+        public String getNombre() {
+            return nombre;
+        }
+
+        public int getSeguidoresMiles() {
+            return seguidoresMiles;
+        }
 
         @Override
         public String toString() {
@@ -23,126 +30,121 @@ public class BusquedaArtistas {
     }
 
     // ------------------------------------------------------------
-    // MÉTODOS a IMPLEMENTAR
+    // MÉTODOS IMPLEMENTADOS
     // ------------------------------------------------------------
 
     /**
      * Devuelve el índice de la primera coincidencia por nombre (ignora mayúsculas).
-     * @param cartel array de artistas
-     * @param nombreBuscado nombre a buscar
-     * @return índice (0..n-1) o -1 si no existe
      */
     public static int indiceDe(Artista[] cartel, String nombreBuscado) {
-     for (int i= 0;i > cartel.length; i++ ){
-     if(cartel[i].getNombre().equalsIgnoreCase("nombreBuscado")) {
-     return i;
-     }
-     }
-      return -1;
-        
-        // Recorre el array 'cartel' y compara cartel[i].getNombre()
-        // con 'nombreBuscado' usando equalsIgnoreCase.
-        // Si coincide, devuelve i. Si terminas el bucle sin encontrarlo, devuelve -1.
-        
-       
+        for (int i = 0; i < cartel.length; i++) {
+            if (cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)) {
+                return i; // Devuelve el primer índice que coincide
+            }
+        }
+        return -1; // No hay coincidencias
     }
 
     /**
-     * Indica si existe un artista con ese nombre.
-     * @param cartel array de artistas
-     * @param nombreBuscado nombre a buscar
-     * @return true si existe, false en caso contrario
+     * Indica si existe un artista con el nombre dado.
      */
     public static boolean existe(Artista[] cartel, String nombreBuscado) {
-        // TODO:
-        // Devuelve true si indiceDe(cartel, nombreBuscado) es distinto de -1.
-        // En caso contrario, false.
-       for (int i =0; i > cartel.length; i++ ) {
-       if (!(indiceDe(cartel, nombreBuscado) == -1)) {
-       return true;
-        
-       }
- 
-
-       }
-       
-       
-       
-       
-        return false;
+        // True si el índice de la primera coincidencia no es -1
+        return indiceDe(cartel, nombreBuscado) != -1;
     }
 
     /**
-     * Devuelve un array con todos los índices donde el nombre coincide (ignora mayúsculas).
-     * Si no hay coincidencias, devuelve un array de longitud 0.
-     * @param cartel array de artistas
-     * @param nombreBuscado nombre a buscar
-     * @return array con índices de coincidencias
+     * Devuelve un array con todos los índices donde el nombre coincide.
      */
     public static int[] indicesDeTodos(Artista[] cartel, String nombreBuscado) {
-        // TODO:
-        // 1) Recorre el array y cuenta cuántas coincidencias hay (equalsIgnoreCase).
-        // 2) Crea un nuevo int[] del tamaño contado.
-        // 3) Recorre de nuevo y rellena ese array con los índices encontrados.
-        // 4) Devuélvelo.
-        return new int[0];
+        // Contar coincidencias
+        int contador = 0;
+        for (int i = 0; i < cartel.length; i++) {
+            if (cartel[i].getNombre().equalsIgnoreCase(nombreBuscado))
+                contador++;
+        }
+
+        // Crear array del tamaño adecuado
+        int[] indices = new int[contador];
+        int pos = 0;
+
+        // Rellenar array con los índices que coinciden
+        for (int i = 0; i < cartel.length; i++) {
+            if (cartel[i].getNombre().equalsIgnoreCase(nombreBuscado))
+                indices[pos++] = i;
+        }
+
+        return indices;
     }
 
     /**
-     * Devuelve un array con los índices de artistas cuyo nombre empieza por la 'inicial' dada.
-     * No distingue mayúsculas/minúsculas. Si no hay, devuelve array de longitud 0.
-     * @param cartel array de artistas
-     * @param inicial letra inicial a filtrar (por ejemplo 'A' o 'q')
-     * @return array con índices de artistas que empiezan por esa letra
+     * Devuelve un array con los índices de artistas cuyo nombre empieza por la
+     * inicial dada.
      */
     public static int[] indicesPorInicial(Artista[] cartel, char inicial) {
-        // TODO:
-        // Pista: compara Character.toLowerCase(inicial) con
-        // Character.toLowerCase(cartel[i].getNombre().charAt(0)).
-        // Haz el mismo patrón de "contar -> crear array -> rellenar -> devolver".
-        return new int[0];
+        char ini = Character.toLowerCase(inicial);
+        int contador = 0;
+
+        // Contar coincidencias por inicial
+        for (int i = 0; i < cartel.length; i++) {
+            if (Character.toLowerCase(cartel[i].getNombre().charAt(0)) == ini)
+                contador++;
+        }
+
+        // Crear array y rellenarlo
+        int[] indices = new int[contador];
+        int pos = 0;
+        for (int i = 0; i < cartel.length; i++) {
+            if (Character.toLowerCase(cartel[i].getNombre().charAt(0)) == ini)
+                indices[pos++] = i;
+        }
+
+        return indices;
     }
 
     /**
-    * Devuelve los índices de artistas cuyo nombre empieza por 'inicial' (ignora mayúsculas)
-    * y cuyo número de seguidores (en miles) está entre 'min' y 'max' (INCLUSIVO).
-    * Si no hay, devuelve array de longitud 0.
-    */
-    public static int[] indicesPorInicialYSeguidores(Artista[] cartel, char inicial,
-                                                     int minSeguidoresMiles, int maxSeguidoresMiles) {
-        // TODO:
-        // 1) Normaliza la inicial con Character.toLowerCase(inicial).
-        // 2) Primera pasada: cuenta cuántos cumplen:
-        //    - Empieza por esa inicial (ignorando mayúsculas).
-        //    - seguidoresMiles >= minSeguidoresMiles && <= maxSeguidoresMiles.
-        // 3) Crea un int[] del tamaño contado.
-        // 4) Segunda pasada: rellena el array con los índices que cumplen.
-        // 5) Devuelve el array.
-        return new int[0];
-    }
+     * Devuelve los índices de artistas cuyo nombre empieza por la inicial dada
+     * y cuyo número de seguidores está entre min y max (inclusive).
+     */
+    public static int[] indicesPorInicialYSeguidores(Artista[] cartel, char inicial, int min, int max) {
+        char ini = Character.toLowerCase(inicial);
+        int contador = 0;
 
+        // Contar coincidencias que cumplan ambas condiciones
+        for (int i = 0; i < cartel.length; i++) {
+            Artista a = cartel[i];
+            if (Character.toLowerCase(a.getNombre().charAt(0)) == ini &&
+                    a.getSeguidoresMiles() >= min && a.getSeguidoresMiles() <= max) {
+                contador++;
+            }
+        }
+
+        // Crear array y rellenarlo
+        int[] indices = new int[contador];
+        int pos = 0;
+        for (int i = 0; i < cartel.length; i++) {
+            Artista a = cartel[i];
+            if (Character.toLowerCase(a.getNombre().charAt(0)) == ini &&
+                    a.getSeguidoresMiles() >= min && a.getSeguidoresMiles() <= max) {
+                indices[pos++] = i;
+            }
+        }
+
+        return indices;
+    }
 
     /**
      * Imprime por pantalla los artistas indicados por sus índices.
-     * Formato: "  - [idx] Artista (…,K seguidores)"
-     * Si el array de índices está vacío, no imprime nada.
      */
-    public static void mostrarArtistas(Artista[] cartel, int[] indices) {
-        // TODO:
-        // Recorre 'indices' y para cada 'idx' imprime:
-        // System.out.println("  - [" + idx + "] " + cartel[idx]);
-        // (No hagas bucles en main; hazlos aquí).
-    }
 
     // ------------------------------------------------------------
-    // MAIN de pruebas (usará los métodos obligatorios)
+    // MAIN de pruebas
     // ------------------------------------------------------------
-
     public static void main(String[] args) {
         Locale.setDefault(Locale.ROOT);
         Scanner sc = new Scanner(System.in);
 
-        // Cartel inicial (12 artistas)
+        // Cartel inicial de artistas
         Artista[] cartel = {
                 new Artista("Aitana", 1200),
                 new Artista("Quevedo", 2500),
@@ -158,7 +160,9 @@ public class BusquedaArtistas {
                 new Artista("Morad", 2700)
         };
 
-        // Búsqueda de primera coincidencia
+        // ------------------------
+        // Buscar primera coincidencia
+        // ------------------------
         System.out.print("Artista a buscar (primera coincidencia): ");
         String nombre = sc.nextLine().trim();
         int pos = indiceDe(cartel, nombre);
@@ -169,56 +173,49 @@ public class BusquedaArtistas {
             System.out.println("✘ " + nombre + " no actúa en el festival.");
         }
 
-        // Búsqueda todas las coincidencias por nombre
+        // ------------------------
+        // Buscar todas las coincidencias por nombre
+        // ------------------------
         System.out.print("\nArtista para listar TODAS las coincidencias: ");
         String nombreTodas = sc.nextLine().trim();
         int[] todos = indicesDeTodos(cartel, nombreTodas);
         if (todos.length > 0) {
             System.out.println("Coincidencias: " + todos.length);
-            mostrarArtistas(cartel, todos); // <-- sin for en main
+            mostrarArtistas(cartel, todos);
         } else {
             System.out.println("No hay coincidencias para \"" + nombreTodas + "\".");
         }
 
-        // Búsqueda de artistas por inicial
+        // ------------------------
+        // Filtrar artistas por inicial
+        // ------------------------
         System.out.print("\nLetra inicial (si dejas vacío usaré 'A'): ");
         String entrada = sc.nextLine().trim();
+        char inicial = entrada.isEmpty() ? 'A' : entrada.charAt(0);
 
-        char inicial = 'A';
-        if (entrada.length() > 0) {
-            inicial = entrada.charAt(0);
-        }
         System.out.println("Usando la inicial: " + Character.toUpperCase(inicial));
         int[] porInicial = indicesPorInicial(cartel, inicial);
         if (porInicial.length > 0) {
             System.out.println("Artistas que empiezan por '" + Character.toUpperCase(inicial) + "':");
-            mostrarArtistas(cartel, porInicial); // <-- sin for en main
+            mostrarArtistas(cartel, porInicial);
         } else {
             System.out.println("No hay artistas que empiecen por '" + Character.toUpperCase(inicial) + "'.");
         }
 
-
-        // Búsqueda por inicial + rango de seguidores (en miles)
+        // ------------------------
+        // Filtrar por inicial y rango de seguidores
+        // ------------------------
         System.out.print("\nInicial para filtrar (vacío='A'): ");
         String entradaIni = sc.nextLine().trim();
-        char inicial2 = 'A';
-        if (entradaIni.length() > 0) {
-            inicial2 = entradaIni.charAt(0);
-        }
+        char inicial2 = entradaIni.isEmpty() ? 'A' : entradaIni.charAt(0);
 
         System.out.print("Mínimo de seguidores en miles (vacío=0): ");
         String sMin = sc.nextLine().trim();
-        int min = 0;
-        if (sMin.length() > 0) {
-            min = Integer.parseInt(sMin);
-        }
+        int min = sMin.isEmpty() ? 0 : Integer.parseInt(sMin);
 
         System.out.print("Máximo de seguidores en miles (vacío=1000000): ");
         String sMax = sc.nextLine().trim();
-        int max = 1000000;
-        if (sMax.length() > 0) {
-            max = Integer.parseInt(sMax);
-        }
+        int max = sMax.isEmpty() ? 1000000 : Integer.parseInt(sMax);
 
         int[] filtrados = indicesPorInicialYSeguidores(cartel, inicial2, min, max);
         if (filtrados.length > 0) {
@@ -232,5 +229,3 @@ public class BusquedaArtistas {
         sc.close();
     }
 }
-
-

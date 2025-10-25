@@ -73,11 +73,9 @@ public class ResultadosAtleti {
     public static Partido partidoMasGolesMarcados(Partido[] temporada) {
         Partido mejor = temporada[0];
         for (int i = 1; i < temporada.length; i++) {
-            if (temporada[i].getGolesRecibidos() > mejor.getGolesMarcados()) {
+            if (temporada[i].getGolesMarcados() > mejor.getGolesMarcados()) {
                 mejor = temporada[i];
-
             }
-
         }
         return mejor;
     }
@@ -102,7 +100,13 @@ public class ResultadosAtleti {
         // 3. Si temporada[i].getGolesMarcados() < peor.getGolesMarcados(), actualiza
         // peor.
         // 4. Devuelve peor.
-        return null;
+        Partido peor = temporada[0];
+        for (int i = 1; i < temporada.length; i++) {
+            if (temporada[i].getGolesMarcados() < peor.getGolesMarcados()) {
+                peor = temporada[i];
+            }
+        }
+        return peor;
     }
 
     // ---------------------------------------------------------------------
@@ -115,10 +119,11 @@ public class ResultadosAtleti {
     public static int totalGolesMarcados(Partido[] temporada) {
         // TODO (opcional):
         // 1. Acumula getGolesMarcados() en un int y devuelve.
-        int totalGoles = 0;
-        for (int i = 0;  i < temporada.length; i++){
-        totalGoles += temporada[i].getGolesMarcados();
-        return totalGoles;
+        int totalMarcados = 0;
+        for (int i = 0; i < temporada.length; i++) {
+            totalMarcados += temporada[i].getGolesMarcados();
+        }
+        return totalMarcados;
     }
 
     /**
@@ -127,9 +132,12 @@ public class ResultadosAtleti {
     public static int totalGolesRecibidos(Partido[] temporada) {
         // TODO (opcional):
         // 1. Acumula getGolesRecibidos() en un int y devuelve.
-        return 0;
+        int totalRecibidos = 0;
+        for (int i = 0; i < temporada.length; i++) {
+            totalRecibidos += temporada[i].getGolesRecibidos();
+        }
+        return totalRecibidos;
     }
-
     // ---------------------------------------------------------------------
     // MAIN
     // ---------------------------------------------------------------------
