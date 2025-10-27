@@ -24,9 +24,26 @@ static class Partido {
         this.golesRecibidos = golesRecibidos;
     }
 
+<<<<<<< HEAD
+    /**
+     * Devuelve el partido con MÁS goles marcados.
+     *
+     * @param temporada array de partidos (no nulo ni vacío)
+     * @return partido con el máximo de goles a favor
+     */
+    public static Partido partidoMasGolesMarcados(Partido[] temporada) {
+        Partido mejor = temporada[0];
+        for (int i = 1; i < temporada.length; i++) {
+            if (temporada[i].getGolesMarcados() > mejor.getGolesMarcados()) {
+                mejor = temporada[i];
+            }
+        }
+        return mejor;
+=======
     /** @return rival */
     public String getRival() {
         return rival;
+>>>>>>> 65c72bc154550c99d859a4b9eb5b22dc03b864cd
     }
 
     /** @return goles a favor */
@@ -106,9 +123,33 @@ public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
     return null;
 }
 
+<<<<<<< HEAD
+    /**
+     * Devuelve el partido con MENOS goles marcados.
+     *
+     * @param temporada array de partidos (no nulo ni vacío)
+     * @return partido con el mínimo de goles a favor
+     */
+    public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
+        // TODO:
+        // 1. Crea una variable Partido peor = temporada[0];
+        // 2. Recorre el array desde el índice 1.
+        // 3. Si temporada[i].getGolesMarcados() < peor.getGolesMarcados(), actualiza
+        // peor.
+        // 4. Devuelve peor.
+        Partido peor = temporada[0];
+        for (int i = 1; i < temporada.length; i++) {
+            if (temporada[i].getGolesMarcados() < peor.getGolesMarcados()) {
+                peor = temporada[i];
+            }
+        }
+        return peor;
+    }
+=======
 // ---------------------------------------------------------------------
 // EXTRAS (opcional, por si quieres pedir suma de goles)
 // ---------------------------------------------------------------------
+>>>>>>> 65c72bc154550c99d859a4b9eb5b22dc03b864cd
 
 /**
      * Suma total de goles marcados en la temporada.
@@ -116,10 +157,11 @@ public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
     public static int totalGolesMarcados(Partido[] temporada) {
         // TODO (opcional):
         // 1. Acumula getGolesMarcados() en un int y devuelve.
-        int totalGoles = 0;
-        for (int i = 0;  i < temporada.length; i++){
-        totalGoles += temporada[i].getGolesMarcados();
-        return totalGoles;
+        int totalMarcados = 0;
+        for (int i = 0; i < temporada.length; i++) {
+            totalMarcados += temporada[i].getGolesMarcados();
+        }
+        return totalMarcados;
     }
 
     /**
@@ -128,9 +170,12 @@ public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
     public static int totalGolesRecibidos(Partido[] temporada) 
         // TODO (opcional):
         // 1. Acumula getGolesRecibidos() en un int y devuelve.
-        return 0;
+        int totalRecibidos = 0;
+        for (int i = 0; i < temporada.length; i++) {
+            totalRecibidos += temporada[i].getGolesRecibidos();
+        }
+        return totalRecibidos;
     }
-
     // ---------------------------------------------------------------------
     // MAIN
     // ---------------------------------------------------------------------
