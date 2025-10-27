@@ -1,9 +1,7 @@
 import java.util.Arrays;
 
 public class CopiasArrays {
-    String[]arr=new carr[4  ]
-
-    /** Copia manual (mismo tamaño y orden). */
+     /** Copia manual (mismo tamaño y orden). */
     static String[] copiarManual(String[] origen) {
         String[] copia = new String[origen.length];
         for (int i = 0; i < origen.length; i++) {
@@ -36,7 +34,7 @@ public class CopiasArrays {
      * null/0/false).
      */
     static String[] copiarConCopyOf(String[] origen, int nuevoTam) {
-        return null;
+        return Arrays.copyOf(origen, nuevoTam);
     }
 
     /** Arrays.copyOfRange(array, from, to) -> subarray (to exclusivo). */

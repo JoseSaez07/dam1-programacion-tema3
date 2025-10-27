@@ -125,7 +125,7 @@ public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
     /**
      * Suma total de goles recibidos en la temporada.
      */
-    public static int totalGolesRecibidos(Partido[] temporada) {
+    public static int totalGolesRecibidos(Partido[] temporada) 
         // TODO (opcional):
         // 1. Acumula getGolesRecibidos() en un int y devuelve.
         return 0;
