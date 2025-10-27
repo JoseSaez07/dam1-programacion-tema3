@@ -24,7 +24,7 @@ static class Partido {
         this.golesRecibidos = golesRecibidos;
     }
 
-<<<<<<< HEAD
+
     /**
      * Devuelve el partido con MÁS goles marcados.
      *
@@ -39,11 +39,11 @@ static class Partido {
             }
         }
         return mejor;
-=======
+    }
     /** @return rival */
     public String getRival() {
         return rival;
->>>>>>> 65c72bc154550c99d859a4b9eb5b22dc03b864cd
+
     }
 
     /** @return goles a favor */
@@ -106,24 +106,6 @@ public static Partido partidoMasGolesMarcados(Partido[] temporada) {
 // 3. Si temporada[i].getGolesMarcados() > mejor.getGolesMarcados(), actualiza
 // mejor.
 // 4. Devuelve mejor.
-
-/**
- * Devuelve el partido con MENOS goles marcados.
- *
- * @param temporada array de partidos (no nulo ni vacío)
- * @return partido con el mínimo de goles a favor
- */
-public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
-    // TODO:
-    // 1. Crea una variable Partido peor = temporada[0];
-    // 2. Recorre el array desde el índice 1.
-    // 3. Si temporada[i].getGolesMarcados() < peor.getGolesMarcados(), actualiza
-    // peor.
-    // 4. Devuelve peor.
-    return null;
-}
-
-<<<<<<< HEAD
     /**
      * Devuelve el partido con MENOS goles marcados.
      *
@@ -145,11 +127,6 @@ public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
         }
         return peor;
     }
-=======
-// ---------------------------------------------------------------------
-// EXTRAS (opcional, por si quieres pedir suma de goles)
-// ---------------------------------------------------------------------
->>>>>>> 65c72bc154550c99d859a4b9eb5b22dc03b864cd
 
 /**
      * Suma total de goles marcados en la temporada.
@@ -167,7 +144,7 @@ public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
     /**
      * Suma total de goles recibidos en la temporada.
      */
-    public static int totalGolesRecibidos(Partido[] temporada) 
+    public static int totalGolesRecibidos(Partido[] temporada) {
         // TODO (opcional):
         // 1. Acumula getGolesRecibidos() en un int y devuelve.
         int totalRecibidos = 0;
@@ -212,4 +189,4 @@ public static Partido partidoMenosGolesMarcados(Partido[] temporada) {
         // marcados, recibidos);
 
     }
-}
+

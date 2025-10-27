@@ -2,7 +2,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class BusquedaArtistas {
-}
     /**
      * Representa a un artista con nombre y número de seguidores (en miles).
      */
@@ -28,6 +27,7 @@ public class BusquedaArtistas {
             return String.format("%s (%,dK seguidores)", nombre, seguidoresMiles);
         }
     }
+}
 
     // ------------------------------------------------------------
     // MÉTODOS IMPLEMENTADOS
@@ -37,51 +37,43 @@ public class BusquedaArtistas {
      * Devuelve el índice de la primera coincidencia por nombre (ignora mayúsculas).
      */
     public static int indiceDe(Artista[] cartel, String nombreBuscado) {
-<<<<<<< HEAD
+
         for (int i = 0; i < cartel.length; i++) {
             if (cartel[i].getNombre().equalsIgnoreCase(nombreBuscado)) {
                 return i; // Devuelve el primer índice que coincide
             }
+            return -1; // No hay coincidencias
+            
         }
-        return -1; // No hay coincidencias
-=======
+        
+
      for (int i= 0;i < cartel.length; i++ ){
      if(nombreBuscado.equalsIgnoreCase(cartel[i].getNombre())) {
      return i;
-     }
      }
       return -1;
         
         // Recorre el array 'cartel' y compara cartel[i].getNombre()
         // con 'nombreBuscado' usando equalsIgnoreCase.
         // Si coincide, devuelve i. Si terminas el bucle sin encontrarlo, devuelve -1.
-        
-       
->>>>>>> 65c72bc154550c99d859a4b9eb5b22dc03b864cd
-    }
+            }
 
     /**
      * Indica si existe un artista con el nombre dado.
      */
     public static boolean existe(Artista[] cartel, String nombreBuscado) {
-<<<<<<< HEAD
-        // True si el índice de la primera coincidencia no es -1
-        return indiceDe(cartel, nombreBuscado) != -1;
-=======
-        // TODO:
-        // Devuelve true si indiceDe(cartel, nombreBuscado) es distinto de -1.
-        // En caso contrario, false.
-       
+  // TODO:
+// Devuelve true si indiceDe(cartel, nombreBuscado) es distinto de -1.
+ // En caso contrario, false.
        return indiceDe(cartel, nombreBuscado) != -1;
-      
->>>>>>> 65c72bc154550c99d859a4b9eb5b22dc03b864cd
+
     }
 
     /**
      * Devuelve un array con todos los índices donde el nombre coincide.
      */
     public static int[] indicesDeTodos(Artista[] cartel, String nombreBuscado) {
-<<<<<<< HEAD
+
         // Contar coincidencias
         int contador = 0;
         for (int i = 0; i < cartel.length; i++) {
@@ -102,20 +94,15 @@ public class BusquedaArtistas {
         return indices;
     }
 
-=======
+
         // TODO:
         // 1) Recorre el array y cuenta cuántas coincidencias hay (equalsIgnoreCase).
         // 2) Crea un nuevo int[] del tamaño contado.
         // 3) Recorre de nuevo y rellena ese array con los índices encontrados.
         // 4) Devuélvelo.
         
-    
-    
->>>>>>> 65c72bc154550c99d859a4b9eb5b22dc03b864cd
-    /**
-     * Devuelve un array con los índices de artistas cuyo nombre empieza por la
-     * inicial dada.
-     */
+
+     // Devuelve un array con los índices de artistas cuyo nombre empieza por la
     public static int[] indicesPorInicial(Artista[] cartel, char inicial) {
         char ini = Character.toLowerCase(inicial);
         int contador = 0;
@@ -263,4 +250,4 @@ public class BusquedaArtistas {
 
         sc.close();
     }
-}
+
